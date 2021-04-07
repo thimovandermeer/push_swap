@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:40:48 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/07 12:11:04 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/07 12:35:22 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	check_swap_operator(const char *operator, t_stack *a, t_stack *b)
 {
-	if(!ft_strcmp(operator, "sa"))
+	if (!ft_strcmp(operator, "sa"))
 	{
 		swap_operator(a);
 		return 1;
 	}
-	if(!ft_strcmp(operator, "sb"))
+	if (!ft_strcmp(operator, "sb"))
 	{
 		swap_operator(b);
 		return 1;
 	}	
-	if(!ft_strcmp(operator, "ss"))
+	if (!ft_strcmp(operator, "ss"))
 	{
 		swap_operator(b);
 		swap_operator(a);
@@ -93,13 +93,12 @@ int check_reverse_operator(const char *operator, t_stack *a, t_stack *b)
 int check_operator(t_stack *a, t_stack *b, const char *operator)
 {
 	if (check_swap_operator(operator, a, b))
-		return 1;
+		return (1);
 	if (check_push_operator(operator, a, b))
-		return 1;
+		return (1);
 	if (check_rotate_operator(operator, a, b))
-		return 1;
+		return (1);
 	if (check_reverse_operator(operator, a, b))
-		return 1;
+		return (1);
 	return 0;
 }
-

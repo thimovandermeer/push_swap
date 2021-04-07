@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/07 12:17:27 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/07 12:33:37 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ void	rotate_operator(t_stack *a)
 	}
 	a->stack[i] = last;
 }
-
