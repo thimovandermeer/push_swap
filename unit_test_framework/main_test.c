@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:49:35 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/06 16:00:49 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/07 09:55:07 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	print_stack(t_stack *a)
 {
 	int i = 0;
-	while(i < a->size)
+	while(i < a->current_size)
 	{
 		printf("%i = %i\n", i, a->stack[i]);
 		i++;
@@ -35,7 +35,7 @@ t_stack	create_mock_values(int which)
 		
 		int test[5] = {1, 4, 5, 6,7};
 		a.size = 5;
-		a.current_size = -1;
+		a.current_size = 0;
 		a.stack = malloc(sizeof(int) * a.size);
 		int i = 0;
 		while(i < a.size)
@@ -49,7 +49,7 @@ t_stack	create_mock_values(int which)
 	{
 		int test[8] = {1, 4, 5, 6,7,8,9,15};
 		a.size = 8;
-		a.current_size = -1;
+		a.current_size = 0;
 		a.stack = malloc(sizeof(int) * a.size);
 		int i = 0;
 		while(i < a.size)
@@ -87,21 +87,85 @@ void	test_swap_operator()
 		print_stack(&a);
 		which++;
 	}
-	
+}
+
+void 	test_push_operator()
+{
+	t_stack a;
+	t_stack b;
+	int test[5] = {1, 4, 5, 6,7};
+	a.size = 5;
+	a.current_size = 0;
+	a.stack = malloc(sizeof(int) * a.size);
+	b.size = 5;
+	b.current_size = 0;
+	b.stack = malloc(sizeof(int) * b.size);
+	int i = 0;
+	while(i < a.size)
+	{
+		a.stack[i] = test[i];
+		i++;
+		a.current_size++;
+	}
+	printf("Printing stack A\n");
+	print_stack(&a);
+	printf("Printing stack B\n");
+	print_stack(&b);
+	push_operator(&a, &b);
+	printf("Printing stack A\n");
+	print_stack(&a);
+	printf("Printing stack B\n");
+	print_stack(&b);
+}
+
+void	test_rotate_operator()
+{
+	t_stack a;
+	int test[5] = {1, 4, 5, 6,7};
+	a.size = 5;
+	a.current_size = 0;
+	a.stack = malloc(sizeof(int) * a.size);
+	int i = 0;
+	while(i < a.size)
+	{
+		a.stack[i] = test[i];
+		i++;
+		a.current_size++;
+	}
+	print_stack(&a);
+	rotate_operator(&a);
+	print_stack(&a);
+}
+
+void test_reverse_operator()
+{
+	t_stack a;
+	int test[5] = {1, 4, 5, 6,7};
+	a.size = 5;
+	a.current_size = 0;
+	a.stack = malloc(sizeof(int) * a.size);
+	int i = 0;
+	while(i < a.size)
+	{
+		a.stack[i] = test[i];
+		i++;
+		a.current_size++;
+	}
+	print_stack(&a);
+	reverse_rotate_operator(&a);
+	print_stack(&a);
 }
 
 void	test_operators()
 {
-	// test swap operator
-	test_swap_elements();
-	test_swap_operator();
-	// // test push operator
+	// test_swap_elements();
+	// test_swap_operator();
 	// test_push_operator();
-	// // test rotate operator
 	// test_rotate_operator();
-	// // test reverse operator
 	// test_reverse_operator();
 
+	// tests for the game rules
+	
 	printf("Finished testing operators\n");
 	
 }
@@ -120,3 +184,4 @@ int main()
 	
 	
 }
+

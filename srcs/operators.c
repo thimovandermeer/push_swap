@@ -6,12 +6,13 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/06 15:52:01 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/07 12:17:27 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/includes/push_swap.h"
 #include <stdio.h>
+
 void	swap_elems(int *old_top, int *new_top)
 {
 	int temp;
@@ -25,28 +26,43 @@ void	swap_operator(t_stack *stack)
 	if(stack->current_size <= 1)
 		return ;
 	else
-		swap_elems(&(stack->stack[stack->current_size]), &(stack->stack[stack->current_size - 1]));
+		swap_elems(&(stack->stack[stack->current_size  - 1]), &(stack->stack[stack->current_size - 2]));
 }
 
 void	push_operator(t_stack *giver, t_stack *receiver)
 {
-	if (receiver->current_size == 0)
+	if (giver->current_size == 0)
 		return ;
 	else
 	{
-		receiver->stack[receiver->current_size] = giver->stack[giver->current_size];
+		receiver->stack[receiver->current_size] = giver->stack[giver->current_size - 1];
 		receiver->current_size++;
 		giver->current_size--;
 	}
 }
 
-void	rotate_operator()
+void	reverse_rotate_operator(t_stack *a)
 {
-
+	int i = 0;
+	int first = a->stack[0];
+	while(i < a->current_size - 1)
+	{
+		a->stack[i] = a->stack[i + 1];
+		i++;
+	}
+	a->stack[i] = first;
 }
 
-void	reverse_rotate_operator()
+void	rotate_operator(t_stack *a)
 {
-	
+	int i = 0;
+	int last = a->stack[a->current_size - 1];
+	i = a->current_size - 1;
+	while(i > 0)
+	{
+		a->stack[i] = a->stack[i - 1];
+		i--;
+	}
+	a->stack[i] = last;
 }
 

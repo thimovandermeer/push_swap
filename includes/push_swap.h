@@ -6,14 +6,14 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:06:12 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/06 14:58:11 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/07 10:02:15 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/libft/libft.h"
-#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/get_next_line/get_next_line.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 typedef struct s_stack
 {
 	size_t 	size;
