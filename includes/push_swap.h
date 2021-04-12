@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:06:12 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 07:12:11 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 10:31:10 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,16 @@ void	rotate_operator();
 void	reverse_rotate_operator();
 
 /*
-*  utils functions
+*  Checker functions
+*/
+
+int		check_inputs(int num_args, char **arguments);
+int		save_inputs(char **arguments, t_stack *a, t_stack *b);
+void	read_instructions(t_stack *a, t_stack *b);
+void	clean_stacks(int **a, int **b);
+
+/*
+*  Util functions
 */
 
 void	print_stack(t_stack *a);

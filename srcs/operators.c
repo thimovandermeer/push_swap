@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 09:03:26 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 10:28:30 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 
 void	rotate_operator(t_stack *a)
 {
-	int		i;
-	int		first;
+	int	i;
+	int first;
 
-	i = 0;
+	i = 0;	
 	first = a->stack[0];
-	while (i < a->current_size - 1)
+	while(i < a->current_size - 1)
 	{
 		a->stack[i] = a->stack[i + 1];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 10:49:16 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 07:14:46 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 10:26:24 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,30 +79,31 @@ void	clean_stacks(int **a, int **b)
 	free(*b);
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	t_stack	a;
-// 	t_stack	b;
-// 	int		ret;
-// 	int		*array;
+int	main(int argc, char **argv)
+{
+	t_stack	a;
+	t_stack	b;
+	int		ret;
+	int		*array;
 
-// 	if (argc <= 1)
-// 		return (1);
-// 	// still need to check for duplicates
-// 	if (check_inputs(argc, argv))
-// 	{
-// 		ft_putstr_fd("Error during checking inputs", 1);
-// 		exit(1);
-// 	}
-// 	a.size = argc;
-// 	if (save_inputs(argv, &a, &b) == -1)
-// 		return (1);
-// 	read_instructions(&a, &b);
-// 	a.size = argc - 1;
-// 	ret = is_sorted(&a);
-// 	if (ret == 1)
-// 		ft_putstr_fd("OK\n", 1 );
-// 	else
-// 		ft_putstr_fd("KO\n", 1 );
-// 	clean_stacks(&a.stack, &b.stack);
-// }
+	if (argc <= 1)
+		return (1);
+	// still need to check for duplicates
+	if (check_inputs(argc, argv))
+	{
+		ft_putstr_fd("Error during checking inputs", 1);
+		exit(1);
+	}
+	a.size = argc;
+	if (save_inputs(argv, &a, &b) == -1)
+		return (1);
+	read_instructions(&a, &b);
+	a.size = argc - 1;
+	ret = is_sorted(&a);
+	if (ret == 1)
+		ft_putstr_fd("OK\n", 1 );
+	else
+		ft_putstr_fd("KO\n", 1 );
+	clean_stacks(&a.stack, &b.stack);
+}
+
