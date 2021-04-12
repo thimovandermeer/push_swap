@@ -106,3 +106,4 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("KO\n", 1 );
 	clean_stacks(&a.stack, &b.stack);
 }
+

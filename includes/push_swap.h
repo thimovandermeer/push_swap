@@ -58,3 +58,13 @@ void	print_stack(t_stack *a);
 int		is_all_num(char *arguments);
 int		is_integer(char *arguments);
 int		is_sorted(t_stack *a);
+
+/*
+*  push_swap functions
+*/
+
+void	solve_three(t_stack *a, t_stack *b);
+void	solve_five();
+void	solve_hundred();
+void	solve_big_stack();
+void	solve(t_stack *a, t_stack *b);

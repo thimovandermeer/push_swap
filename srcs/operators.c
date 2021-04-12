@@ -24,10 +24,13 @@ void	swap_elems(int *old_top, int *new_top)
 
 void	swap_operator(t_stack *stack)
 {
-	if(stack->current_size <= 1)
+	if (stack->current_size <= 1)
 		return ;
 	else
-		swap_elems(&(stack->stack[stack->current_size  - 1]), &(stack->stack[stack->current_size - 2]));
+	{
+		swap_elems(&(stack->stack[0]),
+			&(stack->stack[1]));
+	}
 }
 
 void	push_operator(t_stack *giver, t_stack *receiver)
@@ -43,7 +46,7 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 	}
 }
 
-void	reverse_rotate_operator(t_stack *a)
+void	rotate_operator(t_stack *a)
 {
 	int	i;
 	int first;
@@ -58,12 +61,15 @@ void	reverse_rotate_operator(t_stack *a)
 	a->stack[i] = first;
 }
 
-void	rotate_operator(t_stack *a)
+void	reverse_rotate_operator(t_stack *a)
 {
-	int i = 0;
-	int last = a->stack[a->current_size - 1];
+	int		i;
+	int		last;
+
+	i = 0;
+	last = a->stack[a->current_size - 1];
 	i = a->current_size - 1;
-	while(i > 0)
+	while (i > 0)
 	{
 		a->stack[i] = a->stack[i - 1];
 		i--;
