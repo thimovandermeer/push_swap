@@ -4,7 +4,8 @@ SDIR = srcs
 ODIR = objs
 _OBJS = checker \
 		check_operators \
-		operators
+		operators \
+		utils
 OBJS =	$(addsuffix .o, $(addprefix $(ODIR)/, $(_OBJS)))
 LIBFT = libft.a
 LIBFTMAP = libft

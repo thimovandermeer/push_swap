@@ -6,16 +6,17 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/07 12:33:37 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 10:28:30 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/includes/push_swap.h"
+#include "../includes/push_swap.h"
 #include <stdio.h>
 
 void	swap_elems(int *old_top, int *new_top)
 {
-	int temp;
+	int	temp;
+
 	temp = *old_top;
 	*old_top = *new_top;
 	*new_top = temp;
@@ -35,7 +36,8 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 		return ;
 	else
 	{
-		receiver->stack[receiver->current_size] = giver->stack[giver->current_size - 1];
+		receiver->stack[receiver->current_size] = giver->stack
+		[giver->current_size - 1];
 		receiver->current_size++;
 		giver->current_size--;
 	}
@@ -43,8 +45,11 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 
 void	reverse_rotate_operator(t_stack *a)
 {
-	int i = 0;
-	int first = a->stack[0];
+	int	i;
+	int first;
+
+	i = 0;	
+	first = a->stack[0];
 	while(i < a->current_size - 1)
 	{
 		a->stack[i] = a->stack[i + 1];

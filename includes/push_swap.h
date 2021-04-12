@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:06:12 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/07 10:02:15 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 10:31:10 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,21 @@ void	swap_operator(t_stack *stack);
 void	push_operator(t_stack *giver, t_stack *receiver);
 void	rotate_operator();
 void	reverse_rotate_operator();
+
+/*
+*  Checker functions
+*/
+
+int		check_inputs(int num_args, char **arguments);
+int		save_inputs(char **arguments, t_stack *a, t_stack *b);
+void	read_instructions(t_stack *a, t_stack *b);
+void	clean_stacks(int **a, int **b);
+
+/*
+*  Util functions
+*/
+
+void	print_stack(t_stack *a);
+int		is_all_num(char *arguments);
+int		is_integer(char *arguments);
+int		is_sorted(t_stack *a);
