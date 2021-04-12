@@ -6,16 +6,17 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/07 12:33:37 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 09:03:26 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/includes/push_swap.h"
+#include "../includes/push_swap.h"
 #include <stdio.h>
 
 void	swap_elems(int *old_top, int *new_top)
 {
-	int temp;
+	int	temp;
+
 	temp = *old_top;
 	*old_top = *new_top;
 	*new_top = temp;
@@ -23,10 +24,13 @@ void	swap_elems(int *old_top, int *new_top)
 
 void	swap_operator(t_stack *stack)
 {
-	if(stack->current_size <= 1)
+	if (stack->current_size <= 1)
 		return ;
 	else
-		swap_elems(&(stack->stack[stack->current_size  - 1]), &(stack->stack[stack->current_size - 2]));
+	{
+		swap_elems(&(stack->stack[0]),
+			&(stack->stack[1]));
+	}
 }
 
 void	push_operator(t_stack *giver, t_stack *receiver)
@@ -35,17 +39,21 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 		return ;
 	else
 	{
-		receiver->stack[receiver->current_size] = giver->stack[giver->current_size - 1];
+		receiver->stack[receiver->current_size] = giver->stack
+		[giver->current_size - 1];
 		receiver->current_size++;
 		giver->current_size--;
 	}
 }
 
-void	reverse_rotate_operator(t_stack *a)
+void	rotate_operator(t_stack *a)
 {
-	int i = 0;
-	int first = a->stack[0];
-	while(i < a->current_size - 1)
+	int		i;
+	int		first;
+
+	i = 0;
+	first = a->stack[0];
+	while (i < a->current_size - 1)
 	{
 		a->stack[i] = a->stack[i + 1];
 		i++;
@@ -53,12 +61,15 @@ void	reverse_rotate_operator(t_stack *a)
 	a->stack[i] = first;
 }
 
-void	rotate_operator(t_stack *a)
+void	reverse_rotate_operator(t_stack *a)
 {
-	int i = 0;
-	int last = a->stack[a->current_size - 1];
+	int		i;
+	int		last;
+
+	i = 0;
+	last = a->stack[a->current_size - 1];
 	i = a->current_size - 1;
-	while(i > 0)
+	while (i > 0)
 	{
 		a->stack[i] = a->stack[i - 1];
 		i--;
