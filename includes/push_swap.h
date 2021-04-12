@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:06:12 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 10:31:10 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/12 10:57:16 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,14 @@ void	print_stack(t_stack *a);
 int		is_all_num(char *arguments);
 int		is_integer(char *arguments);
 int		is_sorted(t_stack *a);
+
+/*
+*  push_swap functions
+*/
+int		pos_biggest_number(int *array, int size);
+int		pos_smallest_number(int *array, int size);
+void	solve_three(t_stack *a);
+void	solve_five();
+void	solve_hundred();
+void	solve_big_stack();
+void	solve(t_stack *a, t_stack *b);
