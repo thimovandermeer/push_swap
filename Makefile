@@ -5,6 +5,7 @@ ODIR = objs
 _OBJS = checker \
 		check_operators \
 		operators \
+		solve_hundred \
 		utils
 OBJS =	$(addsuffix .o, $(addprefix $(ODIR)/, $(_OBJS)))
 LIBFT = libft.a

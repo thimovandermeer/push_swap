@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:06:12 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 10:57:16 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/13 10:50:10 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+# define GO_UP 0
+# define GO_DOWN 1
+
 typedef struct s_stack
 {
 	size_t 	size;
@@ -38,8 +42,8 @@ int check_operator(t_stack *a, t_stack *b, const char *operator);
 void	swap_elems(int *old_top, int *new_top);
 void	swap_operator(t_stack *stack);
 void	push_operator(t_stack *giver, t_stack *receiver);
-void	rotate_operator();
-void	reverse_rotate_operator();
+void	rotate_operator(t_stack *stack);
+void	reverse_rotate_operator(t_stack *stack);
 
 /*
 *  Checker functions
@@ -62,6 +66,7 @@ int		is_sorted(t_stack *a);
 /*
 *  push_swap functions
 */
+
 int		pos_biggest_number(int *array, int size);
 int		pos_smallest_number(int *array, int size);
 void	solve_three(t_stack *a);
@@ -69,3 +74,12 @@ void	solve_five();
 void	solve_hundred();
 void	solve_big_stack();
 void	solve(t_stack *a, t_stack *b);
+
+/*
+*  solve hundred functions
+*/
+
+int 	find_median(t_stack *a);
+void	sort_array(int *array, int len);
+void	push_median(t_stack *a, t_stack *b, int i, int median);
+void	find_biggest_smallest(t_stack *b, int j);
