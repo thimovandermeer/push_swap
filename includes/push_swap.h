@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -81,5 +81,5 @@ void	solve(t_stack *a, t_stack *b);
 
 int 	find_median(t_stack *a);
 void	sort_array(int *array, int len);
-void	push_median(t_stack *a, t_stack *b, int i, int median);
-void	find_biggest_smallest(t_stack *b, int j);
+void	push_median(t_stack *a, t_stack *b, int median);
+int		find_biggest_smallest(t_stack *b, t_stack *a);

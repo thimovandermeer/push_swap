@@ -33,12 +33,22 @@ void	sort_array(int *array, int len)
 	}
 }
 
-void	push_median(t_stack *a, t_stack *b, int i, int median)
+void	push_median(t_stack *a, t_stack *b, int median)
 {
-	if (a->stack[a->current_size - 1] <= median)
-		push_operator(a, b);
-	else
-		rotate_operator(a);
+
+	int i;
+
+	i = 0;
+	while(i < a->size)
+	{
+		if (a->stack[a->current_size - 1] <= median)
+			push_operator(a, b);
+		else
+			rotate_operator(a);
+		i++;
+		printf("hang ik in deze ?\n");
+	}
+	
 }
 
 void	print_array(int *array, int len)
@@ -67,59 +77,81 @@ int 	find_median(t_stack *a)
 	{
 		array[i] = a->stack[i];
 		i++;
-		printf("deze ook niet?\n");
 	}
 	sort_array(array, a->current_size);
 	median = array[quarter_len * 2];
-	printf("median = %i\n", median);
 	return (median);
 }
 
-// function to push to b until median is found
 
 
-void	move_up(int distance, t_stack *b)
+// int		move_smallest(t_stack *tmp, int smallest)
+// {
+// 	int steps_to_start;
+// 	int	steps_to_end;
+
+// 	if(tmp)
+// 	{
+// 		moves_to_start();
+// 		moves_to_end();
+// 	}
+// 	return 0;
+// }
+
+// int		move_biggest()
+// {
+// 	return 0;
+// }
+
+// void	find_moves( t_stack *b, int biggest, int smallest)
+// {	
+// 	t_stack *tmp;
+
+// 	tmp = b;
+// 	move_smallest(tmp, smallest);
+// 	move_biggest();
+// }
+
+void	move_up(int steps, t_stack *b, t_stack *a)
 {
-	if (distance > 0)
+	int i;
+
+	i = 0;
+	while(i < steps)
 	{
-		while(distance)
-		{
-			printf("move up\n");
-			rotate_operator(b);
-			distance--;
-		}
+		rotate_operator(b);
+		i++;
 	}
-	
+	push_operator(b,a);
+}
+void	move_down()
+{
+
 }
 
-void 	move_down(int distance, t_stack *b)
+int		find_biggest_smallest(t_stack *b, t_stack *a)
 {
-	printf("distance = %i\n", distance);
-	if(distance > 0)
+	int biggest;
+	int smallest;
+	int after_rotate;
+	biggest = b->current_size - pos_biggest_number(b->stack, b->current_size);
+	smallest = b->current_size - pos_smallest_number(b->stack, b->current_size);
+	biggest -= 1;
+	smallest -= 1;
+	after_rotate = 0;
+	if (smallest < biggest)
 	{
-		while (distance)
-		{
-			// printf("movedown\n");
-			reverse_rotate_operator(b);
-			distance--;
-		}
+		move_up(smallest, b, a);
+		rotate_operator(a);
 	}
+	if (biggest < smallest)
+	{
+		move_up(biggest, b, a);
+		after_rotate++;
+	}
+		
+	printf("current_size = %zu\n", b->current_size);
+	if (b->current_size == 1)
+		push_operator(b, a);
+	return after_rotate;
 }
-
-void		find_biggest_smallest(t_stack *b, int j)
-{
-	int pos_biggest;
-	int pos_smallest;
-	int distance_big;
-	int distance_small;
-	
-	pos_biggest = pos_biggest_number(b->stack, b->current_size - 1);
-	pos_smallest = pos_smallest_number(b->stack, b->current_size - 1);
-	printf("biggest = %i\n", pos_biggest);
-	printf("smallest = %i\n", pos_smallest);
-	while()
-		move_up(j - pos_biggest, b);
-	else
-		move_down(j - pos_smallest, b);
-}
-

@@ -105,29 +105,30 @@ void	solve_five(t_stack *a, t_stack *b)
 void	solve_hundred(t_stack *a, t_stack *b)
 {
 	int i;
-	int j;
-	// find median
 	int median;
-	
-	
-	median = find_median(a);
+	int after_rotate;
+
+	after_rotate = 0;
 	i = 0;
-	j = 0;
 	// while (array exists)
-	printf("a->size = %zu\n", a->size);
-	while(i < a->size)
+	median = find_median(a);
+	while(a->stack)
 	{
 		// push numbers to frame b
-		push_median(a, b, i, median);
-		j = 0;
-		while(j < b->current_size)
+		push_median(a, b, median);
+		while(b->current_size > 0)
 		{
-			find_biggest_smallest(b, j);
-			j++;
-			printf("j = %i\n", j);
+			after_rotate += find_biggest_smallest(b, a);
+			printf("Afterrotate = %i\n", after_rotate);
 		}
-		printf("i = %i\n", i);
-		i++;
+		while(after_rotate)
+		{
+			printf("kom ik hier?\n");
+			rotate_operator(a);
+			after_rotate--;
+		}
+		if(after_rotate == 0)
+			break ;
 	}
 	
 	printf("Stack printed in solvehundred STACK A\n");
