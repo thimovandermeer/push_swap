@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/13 14:50:27 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/15 15:23:07 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,36 @@ void	sort_array(int *array, int len)
 	}
 }
 
-void	push_median(t_stack *a, t_stack *b, int median)
+int		smallest_num(int *array, int len)
+{
+	int i = len - 1;
+	int smallest_number = i;
+	while(i)
+	{
+		if(array[i] <= smallest_number)
+			smallest_number = array[i];
+		i--;
+	}
+	return smallest_number;
+}
+
+void	push_median(t_stack *a, t_stack *b, int median, int split)
 {
 
 	int i;
-
+	int smallest;
+	smallest = smallest_num(a->stack, a->current_size);
 	i = 0;
 	while(i < a->size)
 	{
-		if (a->stack[a->current_size - 1] <= median)
+		if (split == 1 && a->stack[a->current_size - 1] <= median)
 			push_operator(a, b);
+		else if (split == 2 && a->stack[a->current_size -1] > median)
+			push_operator(a,b);
 		else
 			rotate_operator(a);
 		i++;
-		printf("hang ik in deze ?\n");
 	}
-	
 }
 
 void	print_array(int *array, int len)
@@ -72,7 +86,6 @@ int 	find_median(t_stack *a)
 	quarter_len = a->current_size / 4;
 	i = 0;
 	ft_bzero(array, a->current_size);
-	printf("current_size = %zu\n", a->current_size);
 	while(i < a->current_size)
 	{
 		array[i] = a->stack[i];
@@ -82,35 +95,6 @@ int 	find_median(t_stack *a)
 	median = array[quarter_len * 2];
 	return (median);
 }
-
-
-
-// int		move_smallest(t_stack *tmp, int smallest)
-// {
-// 	int steps_to_start;
-// 	int	steps_to_end;
-
-// 	if(tmp)
-// 	{
-// 		moves_to_start();
-// 		moves_to_end();
-// 	}
-// 	return 0;
-// }
-
-// int		move_biggest()
-// {
-// 	return 0;
-// }
-
-// void	find_moves( t_stack *b, int biggest, int smallest)
-// {	
-// 	t_stack *tmp;
-
-// 	tmp = b;
-// 	move_smallest(tmp, smallest);
-// 	move_biggest();
-// }
 
 void	move_up(int steps, t_stack *b, t_stack *a)
 {
@@ -149,9 +133,10 @@ int		find_biggest_smallest(t_stack *b, t_stack *a)
 		move_up(biggest, b, a);
 		after_rotate++;
 	}
-		
-	printf("current_size = %zu\n", b->current_size);
 	if (b->current_size == 1)
+	{
 		push_operator(b, a);
+		after_rotate++;
+	}
 	return after_rotate;
 }

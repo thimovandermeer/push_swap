@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/13 11:40:34 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/15 14:56:34 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,35 +107,26 @@ void	solve_hundred(t_stack *a, t_stack *b)
 	int i;
 	int median;
 	int after_rotate;
-
+	int split;
 	after_rotate = 0;
 	i = 0;
+	split = 1;
 	// while (array exists)
 	median = find_median(a);
 	while(a->stack)
 	{
-		// push numbers to frame b
-		push_median(a, b, median);
+		push_median(a, b, median, split);
 		while(b->current_size > 0)
-		{
 			after_rotate += find_biggest_smallest(b, a);
-			printf("Afterrotate = %i\n", after_rotate);
-		}
 		while(after_rotate)
 		{
-			printf("kom ik hier?\n");
 			rotate_operator(a);
 			after_rotate--;
 		}
-		if(after_rotate == 0)
+		split++;
+		if(split == 3)
 			break ;
 	}
-	
-	printf("Stack printed in solvehundred STACK A\n");
-	print_stack(a);
-	printf("Stack printed in solvehundred STACK B\n");
-	print_stack(b);
-	
 }
 
 void	solve_big_stack()
@@ -184,5 +175,6 @@ int main(int argc, char **argv)
 	// print_stack(&a);
 	// print_stack(&a);
 	solve_hundred(&a, &b);
+	print_stack(&a);
 	// solve(&a, &b);
 }

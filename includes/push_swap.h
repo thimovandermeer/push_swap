@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:06:12 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/13 10:50:10 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/15 12:34:23 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void	solve(t_stack *a, t_stack *b);
 
 int 	find_median(t_stack *a);
 void	sort_array(int *array, int len);
-void	push_median(t_stack *a, t_stack *b, int median);
+void	push_median(t_stack *a, t_stack *b, int median, int split);
 int		find_biggest_smallest(t_stack *b, t_stack *a);
