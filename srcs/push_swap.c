@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/15 14:56:34 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/19 11:00:42 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	solve_hundred(t_stack *a, t_stack *b)
 		push_median(a, b, median, split);
 		while(b->current_size > 0)
 			after_rotate += find_biggest_smallest(b, a);
+		printf("after rotate =%i\n", after_rotate);
 		while(after_rotate)
 		{
 			rotate_operator(a);

@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/15 15:23:07 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/19 11:11:53 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,29 +108,55 @@ void	move_up(int steps, t_stack *b, t_stack *a)
 	}
 	push_operator(b,a);
 }
-void	move_down()
+void	move_down(int steps, t_stack *b, t_stack *a)
 {
+	int i;
 
+	i = 0;
+	steps++;
+	while(i < steps)
+	{
+		reverse_rotate_operator(b);
+		i++;
+	}
+	push_operator(b, a);
 }
 
 int		find_biggest_smallest(t_stack *b, t_stack *a)
 {
-	int biggest;
-	int smallest;
+	int biggest_up;
+	int smallest_up;
+	int biggest_down;
+	int smallest_down;
 	int after_rotate;
-	biggest = b->current_size - pos_biggest_number(b->stack, b->current_size);
-	smallest = b->current_size - pos_smallest_number(b->stack, b->current_size);
-	biggest -= 1;
-	smallest -= 1;
+	biggest_up = b->current_size - pos_biggest_number(b->stack, b->current_size);
+	smallest_up = b->current_size - pos_smallest_number(b->stack, b->current_size);
+	biggest_up -= 1;
+	smallest_up -= 1;
+	biggest_down = pos_biggest_number(b->stack, b->current_size);
+	smallest_down = pos_smallest_number(b->stack, b->current_size);
+	
 	after_rotate = 0;
-	if (smallest < biggest)
+	if (smallest_up < biggest_up && smallest_up < smallest_down)
 	{
-		move_up(smallest, b, a);
+		move_up(smallest_up, b, a);
 		rotate_operator(a);
 	}
-	if (biggest < smallest)
+	else if (biggest_up < smallest_up && biggest_up < biggest_down)
 	{
-		move_up(biggest, b, a);
+		move_up(biggest_up, b, a);
+		after_rotate++;
+	}
+	else if (smallest_down < biggest_down && smallest_down < smallest_up)
+	{
+		print_stack(b);
+		move_down(smallest_down, b, a);
+		rotate_operator(a);
+	}
+	else if (biggest_down < smallest_down && biggest_down < biggest_up)
+	{
+		print_stack(b);
+		move_down(biggest_down, b,a);
 		after_rotate++;
 	}
 	if (b->current_size == 1)
