@@ -6,7 +6,9 @@ _OBJS = checker \
 		check_operators \
 		operators \
 		solve_hundred \
-		utils
+		utils \
+		solve_hundred_utils \
+		push_swap 
 OBJS =	$(addsuffix .o, $(addprefix $(ODIR)/, $(_OBJS)))
 LIBFT = libft.a
 LIBFTMAP = libft
