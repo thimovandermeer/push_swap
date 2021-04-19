@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 09:03:26 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/19 15:41:39 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	swap_operator(t_stack *stack)
 	if (stack->current_size <= 1)
 		return ;
 	else
-	{
-		swap_elems(&(stack->stack[0]),
-			&(stack->stack[1]));
-	}
+		swap_elems(&(stack->stack[stack->current_size - 1]),
+			&(stack->stack[stack->current_size - 2]));
 }
 
 void	push_operator(t_stack *giver, t_stack *receiver)
@@ -48,8 +46,8 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 
 void	rotate_operator(t_stack *a)
 {
-	int		i;
-	int		first;
+	int	i;
+	int	first;
 
 	i = 0;
 	first = a->stack[0];
@@ -63,10 +61,9 @@ void	rotate_operator(t_stack *a)
 
 void	reverse_rotate_operator(t_stack *a)
 {
-	int		i;
-	int		last;
+	int	i;
+	int	last;
 
-	i = 0;
 	last = a->stack[a->current_size - 1];
 	i = a->current_size - 1;
 	while (i > 0)

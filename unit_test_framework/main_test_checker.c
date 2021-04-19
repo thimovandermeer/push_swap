@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:49:35 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/12 08:37:05 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/19 15:41:39 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,13 +175,13 @@ void	test_inputs()
 	
 }
 
-int main()
-{
-	// test swap elemens
-	// test_inputs();
-	test_operators();
+// int main()
+// {
+// 	// test swap elemens
+// 	// test_inputs();
+// 	test_operators();
 
 	
 	
-}
+// }
 
