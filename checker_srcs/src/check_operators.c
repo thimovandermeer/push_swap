@@ -6,11 +6,12 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:40:48 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:41:39 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 14:16:18 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/checker_srcs/include/checker.h"
+
 
 int	check_swap_operator(const char *operator, t_stack *a, t_stack *b)
 {

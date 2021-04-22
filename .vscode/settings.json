@@ -2,6 +2,8 @@
 	"files.associations": {
 		"*.cpp": "cpp",
 		"libft.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"shared.h": "c",
+		"checker.h": "c"
 	}
 }

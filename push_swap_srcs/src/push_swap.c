@@ -6,11 +6,11 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:41:39 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 14:03:44 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	pos_biggest_number(int *array, int size)
 {
@@ -152,29 +152,29 @@ void	solve(t_stack *a, t_stack *b)
 	}
 }
 
-// int main(int argc, char **argv)
-// {
-// 	t_stack	a;
-// 	t_stack	b;
-// 	int		ret;
-// 	int		*array;
+int main(int argc, char **argv)
+{
+	t_stack	a;
+	t_stack	b;
+	int		ret;
+	int		*array;
 
-// 	if (argc <= 1)
-// 		return (1);
-// 	// still need to check for duplicates
-// 	if (check_inputs(argc, argv))
-// 	{
-// 		ft_putstr_fd("Error during checking inputs", 1);
-// 		exit(1);
-// 	}
-// 	// save inputs
-// 	a.size = argc - 1;
-// 	if (save_inputs(argv, &a, &b) == -1)
-// 		return (1);
-// 	// check if sorted
-// 	// print_stack(&a);
-// 	// print_stack(&a);
-// 	solve_hundred(&a, &b);
-// 	// print_stack(&a);
-// 	// solve(&a, &b);
-// }
+	if (argc <= 1)
+		return (1);
+	// still need to check for duplicates
+	if (check_inputs(argc, argv))
+	{
+		ft_putstr_fd("Error during checking inputs", 1);
+		exit(1);
+	}
+	// save inputs
+	a.size = argc - 1;
+	if (save_inputs(argv, &a, &b) == -1)
+		return (1);
+	// check if sorted
+	// print_stack(&a);
+	// print_stack(&a);
+	solve_hundred(&a, &b);
+	// print_stack(&a);
+	// solve(&a, &b);
+}

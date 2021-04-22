@@ -6,11 +6,11 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:41:39 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 12:29:18 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "shared.h"
 #include <stdio.h>
 
 void	swap_elems(int *old_top, int *new_top)
@@ -46,8 +46,8 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 
 void	rotate_operator(t_stack *a)
 {
-	int	i;
-	int	first;
+	size_t	i;
+	int		first;
 
 	i = 0;
 	first = a->stack[0];

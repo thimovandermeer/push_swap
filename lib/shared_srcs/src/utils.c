@@ -6,17 +6,17 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:04:39 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:38:25 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 12:33:46 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "shared.h"
+#include <stdio.h>
 
 int	save_inputs(char **arguments, t_stack *a, t_stack *b)
 {
-	int	i;
-	int	res;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = a->size;
 	b->size = a->size;
@@ -57,12 +57,12 @@ int	check_inputs(int num_args, char **arguments)
 
 void	print_stack(t_stack *a)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < a->current_size)
 	{
-		printf("%i = %i\n", i, a->stack[i]);
+		printf("%zu = %i\n", i, a->stack[i]);
 		i++;
 	}
 	printf("Full stack has been printed\n");
@@ -70,7 +70,7 @@ void	print_stack(t_stack *a)
 
 int	is_all_num(char *arguments)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < ft_strlen(arguments))
@@ -87,7 +87,7 @@ int	is_all_num(char *arguments)
 
 int	is_integer(char *arguments)
 {
-	int	i;
+	size_t	i;
 	int	res;
 
 	i = 0;
@@ -111,7 +111,7 @@ int	is_integer(char *arguments)
 
 int	is_sorted(t_stack *a)
 {
-	int	i;
+	size_t	i;
 
 	if (a->size != a->current_size)
 		return (0);

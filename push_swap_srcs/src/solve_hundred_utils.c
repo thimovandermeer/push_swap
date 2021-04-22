@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Solve_hundred_utils.c                              :+:    :+:            */
+/*   solve_hundred_utils.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/19 14:52:06 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:15:08 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 13:14:16 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	sort_array(int *array, int len)
 {

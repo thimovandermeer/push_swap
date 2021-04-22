@@ -6,11 +6,11 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:13:53 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 13:14:09 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	push_median(t_stack *a, t_stack *b, int median, int split)
 {

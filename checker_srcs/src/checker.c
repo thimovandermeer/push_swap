@@ -6,11 +6,11 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 10:49:16 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/19 15:41:39 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 14:16:24 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/checker_srcs/include/checker.h"
 
 void	read_instructions(t_stack *a, t_stack *b)
 {
