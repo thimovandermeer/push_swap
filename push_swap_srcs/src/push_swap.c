@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 14:03:44 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 15:55:22 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,6 @@ int main(int argc, char **argv)
 	// print_stack(&a);
 	// print_stack(&a);
 	solve_hundred(&a, &b);
-	// print_stack(&a);
+	print_stack(&a);
 	// solve(&a, &b);
 }

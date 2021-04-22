@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/19 14:52:06 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 13:14:16 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 15:53:24 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	find_up(t_steps *steps, t_stack *b, t_stack *a, int after_rotate)
 	if (steps->small_up < steps->big_up && steps->small_up < steps->small_down)
 	{
 		move_up(steps->small_up, b, a);
-		ft_putstr_fd("ra\n", 1);
 		rotate_operator(a);
+		ft_putstr_fd("ra\n", 1);
 	}
 	else if (steps->big_up < steps->small_up && steps->big_up < steps->big_down)
 	{

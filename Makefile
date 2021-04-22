@@ -29,16 +29,16 @@ findsources:
 	make -C push_swap_srcs/ findsources $(SILECE_MAKE)
 
 visualize500: all
-	python3 pyviz.py `ruby -e "puts (0..499).to_a.shuffle.join(' ')"`
+	python3 lib/pyviz.py `ruby -e "puts (0..499).to_a.shuffle.join(' ')"`
 
 visualize100: all
-	python3 pyviz.py `ruby -e "puts (0..99).to_a.shuffle.join(' ')"`
+	python3 lib/pyviz.py `ruby -e "puts (0..99).to_a.shuffle.join(' ')"`
 
 visualize5: all
-	python3 pyviz.py `ruby -e "puts (0..4).to_a.shuffle.join(' ')"`
+	python3 lib/pyviz.py `ruby -e "puts (0..4).to_a.shuffle.join(' ')"`
 
 visualize3: all
-	python3 pyviz.py `ruby -e "puts (0..2).to_a.shuffle.join(' ')"`
+	python3 lib/pyviz.py `ruby -e "puts (0..2).to_a.shuffle.join(' ')"`
 
 eval: all
 	@echo "\n\n====== CHECKER ERROR MANAGEMENT ======"

@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 13:14:09 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/22 15:48:05 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,20 @@ void	push_median(t_stack *a, t_stack *b, int median, int split)
 	while (i < a->size)
 	{
 		if (split == 1 && a->stack[a->current_size - 1] <= median)
+		{
 			push_operator(a, b);
+			ft_putstr_fd("pb\n", 1);
+		}
 		else if (split == 2 && a->stack[a->current_size -1] > median)
+		{
 			push_operator(a, b);
+			ft_putstr_fd("pb\n",1);
+		}
 		else
+		{
 			rotate_operator(a);
+			ft_putstr_fd("ra\n",1);
+		}
 		i++;
 	}
 }
