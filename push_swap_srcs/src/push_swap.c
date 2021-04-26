@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:24:57 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:45:20 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
 	// still need to check for duplicates
 	if (check_inputs(argc, argv))
 	{
-		ft_putstr_fd("Error during checking inputs", 1);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		exit(1);
 	}
 	// save inputs
@@ -175,6 +175,5 @@ int main(int argc, char **argv)
 	// print_stack(&a);
 	// print_stack(&a);
 	solve_hundred(&a, &b);
-	// print_stack(&a);
 	// solve(&a, &b);
 }

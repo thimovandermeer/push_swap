@@ -6,12 +6,23 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:04:39 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:32:30 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:45:15 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 #include <stdio.h>
+
+int check_duplicate(int *array, int len, int number)
+{
+	while(len)
+	{
+		len--;
+		if(array[len] == number)
+			return 1;
+	}
+	return 0;
+}
 
 int	save_inputs(char **arguments, t_stack *a, t_stack *b)
 {
@@ -32,6 +43,11 @@ int	save_inputs(char **arguments, t_stack *a, t_stack *b)
 	while (i)
 	{
 		a->stack[j] = ft_atoi(arguments[i]);
+		if(check_duplicate(a->stack, j, a->stack[j]))
+		{
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			exit(1);
+		}
 		a->current_size++;
 		i--;
 		j++;
@@ -77,8 +93,8 @@ int	is_all_num(char *arguments)
 	{
 		if (!ft_isdigit(arguments[i]))
 		{
-			ft_putstr_fd("Is not a number\n", 1);
-			return (1);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			exit(1);
 		}
 		i++;
 	}
@@ -96,13 +112,13 @@ int	is_integer(char *arguments)
 		res = ft_atoi(arguments);
 		if (res == -1)
 		{
-			ft_putstr_fd("Number is not an integer\n", 1);
-			return (1);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			exit(1);
 		}
 		if (res < 0)
 		{
-			ft_putstr_fd("Number is smaller than 0 \n", 1);
-			return (1);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			exit(1);
 		}
 		i++;
 	}
