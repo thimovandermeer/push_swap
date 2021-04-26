@@ -6,13 +6,13 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 11:25:52 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 14:00:34 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:12:12 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/lib/shared_srcs/include/shared.h"
+# include "/Users/thimovandermeer/Desktop/push_swap_compare/lib/shared_srcs/include/shared.h"
 
 /*
 *  push_swap functions

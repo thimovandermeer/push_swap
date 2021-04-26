@@ -6,11 +6,11 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 10:49:16 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 14:16:24 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:22:25 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/checker_srcs/include/checker.h"
+#include "/Users/thimovandermeer/Desktop/push_swap_compare/checker_srcs/include/checker.h"
 
 void	read_instructions(t_stack *a, t_stack *b)
 {
@@ -51,7 +51,6 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	a.size = argc - 1;
-	printf("a.size = %zu\n", a.size);
 	if (save_inputs(argv, &a, &b) == -1)
 		return (1);
 	read_instructions(&a, &b);

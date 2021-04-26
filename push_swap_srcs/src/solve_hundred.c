@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 15:48:05 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:26:22 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,33 @@ int	find_biggest_smallest(t_stack *b, t_stack *a)
 
 	fill_steps(&steps, b);
 	after_rotate = 0;
-	if (steps.small_up < steps.small_down)
-		after_rotate = find_up(&steps, b, a, after_rotate);
-	else
-		after_rotate = find_down(&steps, b, a, after_rotate);
-	if (b->current_size == 1)
+	if (steps.small_up < steps.big_up && steps.small_up < steps.small_down)
 	{
-		ft_putstr_fd("pa\n", 1);
-		push_operator(b, a);
+		move_up(steps.small_up, b, a);
+		rotate_operator(a);
+		ft_putstr_fd("ra\n",1);
+	}
+	else if (steps.big_up < steps.small_up && steps.big_up < steps.big_down)
+	{
+		move_up(steps.big_up, b, a);
 		after_rotate++;
 	}
-	return (after_rotate);
+	else if (steps.small_down < steps.big_down && steps.small_down < steps.small_up)
+	{
+		move_down(steps.small_down, b, a);
+		rotate_operator(a);
+		ft_putstr_fd("ra\n",1);
+	}
+	else if (steps.big_down < steps.small_down && steps.big_down < steps.big_up)
+	{
+		move_down(steps.big_down, b,a);
+		after_rotate++;
+	}
+	if (b->current_size == 1)
+	{
+		push_operator(b, a);
+		ft_putstr_fd("pa\n",1);
+		after_rotate++;
+	}
+	return after_rotate;
 }

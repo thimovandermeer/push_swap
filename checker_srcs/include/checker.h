@@ -6,13 +6,13 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 08:22:33 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 14:31:16 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:14:04 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
-# include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/lib/shared_srcs/include/shared.h"
+# include "/Users/thimovandermeer/Desktop/push_swap_compare/lib/shared_srcs/include/shared.h"
 # include <stdio.h>
 /*
 *  Check Operator functions

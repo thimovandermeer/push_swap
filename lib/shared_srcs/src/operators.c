@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 12:29:18 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 13:19:37 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 	}
 }
 
-void	rotate_operator(t_stack *a)
+void	reverse_rotate_operator(t_stack *a)
 {
 	size_t	i;
 	int		first;
@@ -59,7 +59,7 @@ void	rotate_operator(t_stack *a)
 	a->stack[i] = first;
 }
 
-void	reverse_rotate_operator(t_stack *a)
+void	rotate_operator(t_stack *a)
 {
 	int	i;
 	int	last;
