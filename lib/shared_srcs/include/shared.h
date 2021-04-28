@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 08:40:48 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 14:06:33 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/28 10:33:17 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		is_integer(char *arguments);
 int		is_sorted(t_stack *a);
 int		save_inputs(char **arguments, t_stack *a, t_stack *b);
 int		check_inputs(int num_args, char **arguments);
+void	print_array(int *array, int len);
 /*
 *  Operator functions
 */

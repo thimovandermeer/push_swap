@@ -6,11 +6,12 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:45:20 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/28 11:05:51 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 
 int	pos_biggest_number(int *array, int size)
 {
@@ -103,37 +104,95 @@ void	solve_five(t_stack *a, t_stack *b)
 	// print_stack(a);
 }
 
-void	solve_hundred(t_stack *a, t_stack *b)
+void	move_down(int steps, t_stack *b, t_stack *a)
 {
 	int	i;
-	int	median;
-	int	after_rotate;
-	int	split;
+
+	i = 0;
+	steps++;
+	while (i < steps)
+	{
+		ft_putstr_fd("rrb\n", 1);
+		reverse_rotate_operator(b);
+		i++;
+	}
+	ft_putstr_fd("pa\n", 1);
+	push_operator(b, a);
+}
+
+void	move_up(int steps, t_stack *b, t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	// printf("steps = %i\n", 1);
+	while (i < steps)
+	{
+		rotate_operator(b);
+		ft_putstr_fd("rb\n", 1);
+		i++;
+	}
+	push_operator(b, a);
+	ft_putstr_fd("pa\n", 1);
+}
+
+void	push_back_to_a(t_stack *a, t_stack *b)
+{
+	int	big_up;
+	int big_down;
+	while (b->current_size > 0)
+	{
+		big_up = b->current_size - pos_biggest_number
+			(b->stack, b->current_size);
+		big_up--;
+		big_down = pos_biggest_number(b->stack, b->current_size);
+		if (big_up < big_down)
+			move_up(big_up, b, a);
+		else
+			move_down(big_down, b, a);
+	}
+}
+	
+void	solve_hundred(t_stack *a, t_stack *b)
+{
+	int			i;
+	int			after_rotate;
+	int			current_quarter;
+	int			*quarters; // zometeen variabel maken
 
 	after_rotate = 0;
 	i = 0;
-	split = 1;
-	median = find_median(a);
-	while (a->stack)
+	current_quarter = 0;
+	quarters = malloc(sizeof(int) * 4);
+	find_quarters(a, quarters);
+	while (i < a->current_size)
 	{
-		push_median(a, b, median, split);
-		while (b->current_size > 0)
-			after_rotate += find_biggest_smallest(b, a);
-		while (after_rotate)
+		// first push numbers out of Q1
+		if (a->stack[a->current_size - 1] <= quarters[current_quarter])
 		{
-			ft_putstr_fd("ra\n", 1);
-			rotate_operator(a);
-			after_rotate--;
+			push_operator(a, b);
+			ft_putstr_fd("pb\n", 1);
+			i = 0;
 		}
-		split++;
-		if (split == 3)
-			break ;
+		else
+		{
+			rotate_operator(a);
+			ft_putstr_fd("ra\n",1);
+		}
+		i++;
+		if (i == a->current_size)
+		{
+			
+			current_quarter++;
+			if (current_quarter == 5)
+			{
+				// print_stack(b);
+				push_back_to_a(a, b);
+				break ;
+			}
+			i = 0;
+		}
 	}
-}
-
-void	solve_big_stack()
-{
-	
 }
 
 void	solve(t_stack *a, t_stack *b)
@@ -146,8 +205,6 @@ void	solve(t_stack *a, t_stack *b)
 			solve_five(a, b);
 		else if (a->size <= 100)
 			solve_hundred(a, b);
-		else
-			solve_big_stack();
 		return ;
 	}
 }
@@ -173,7 +230,9 @@ int main(int argc, char **argv)
 		return (1);
 	// check if sorted
 	// print_stack(&a);
-	// print_stack(&a);
+
 	solve_hundred(&a, &b);
+	// print_stack(&a);
+	// print_stack(&b);
 	// solve(&a, &b);
 }

@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:04:39 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:45:15 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/28 10:34:51 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,15 +141,5 @@ int	is_sorted(t_stack *a)
 	return (1);
 }
 
-void	print_array(int *array, int len)
-{
-	int	i;
 
-	i = 0;
-	while (i < len)
-	{
-		printf("%i = %i\n", i, array[i]);
-		i++;
-	}
-}
 

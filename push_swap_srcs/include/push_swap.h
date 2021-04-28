@@ -6,13 +6,22 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 11:25:52 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:12:12 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/26 14:33:20 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "/Users/thimovandermeer/Desktop/push_swap_compare/lib/shared_srcs/include/shared.h"
+# include <stdio.h>
+typedef	struct s_quarters
+{
+	int first_q;
+	int second_q;
+	int thirth_q;
+	int fourth_q;
+}				t_quarters;
+
 
 /*
 *  push_swap functions
@@ -31,7 +40,7 @@ void	solve(t_stack *a, t_stack *b);
 */
 
 void	push_median(t_stack *a, t_stack *b, int median, int split);
-int		find_median(t_stack *a);
+void	find_quarters(t_stack *a, int *quarters);
 void	move_up(int steps, t_stack *b, t_stack *a);
 void	move_down(int steps, t_stack *b, t_stack *a);
 int		find_biggest_smallest(t_stack *b, t_stack *a);
