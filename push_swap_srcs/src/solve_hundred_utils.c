@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/19 14:52:06 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 08:33:05 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 10:29:25 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,13 @@ void	sort_array(int *array, int len)
 
 int	smallest_num(int *array, int len)
 {
-	int	i;
-	int	smallest_number;
-
-	if (len > 0)
-		i = len - 1;
-	else
-		return -1;
-	smallest_number = i;
-	while (i)
+	int i = 0;
+	int smallest_num = 100000;
+	while(i < len)
 	{
-		if (array[i] <= smallest_number)
-			smallest_number = array[i];
-		i--;
+		if (array[i] < smallest_num)
+			smallest_num = array[i];
+		i++;
 	}
-	return (smallest_number);
+	return smallest_num;
 }

@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 10:15:34 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 10:29:55 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,10 +239,7 @@ void	find_biggest_smallest(t_stack *b, t_stack *a, int current_quarter, int *qua
 		else
 			move_down(step_down, a, b, flag);
 		smallest_number = smallest_num(a->stack, a->current_size);
-		if (smallest_number < 1)
-			break;
 	}
-	
 }
 
 void	solve_hundred(t_stack *a, t_stack *b)
