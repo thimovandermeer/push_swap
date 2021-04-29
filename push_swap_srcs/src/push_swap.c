@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/28 11:05:51 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 10:15:34 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	solve_five(t_stack *a, t_stack *b)
 	// print_stack(a);
 }
 
-void	move_down(int steps, t_stack *b, t_stack *a)
+void	move_down(int steps, t_stack *b, t_stack *a, int flag)
 {
 	int	i;
 
@@ -112,34 +112,48 @@ void	move_down(int steps, t_stack *b, t_stack *a)
 	steps++;
 	while (i < steps)
 	{
-		ft_putstr_fd("rrb\n", 1);
+		if (flag == 2)
+			ft_putstr_fd("rrb\n", 1);
+		else
+			ft_putstr_fd("rra\n", 1);
 		reverse_rotate_operator(b);
 		i++;
 	}
-	ft_putstr_fd("pa\n", 1);
+	if (flag == 2)
+		ft_putstr_fd("pa\n", 1);
+	else
+		ft_putstr_fd("pb\n", 1);
 	push_operator(b, a);
 }
 
-void	move_up(int steps, t_stack *b, t_stack *a)
+void	move_up(int steps, t_stack *b, t_stack *a, int flag)
 {
 	int	i;
 
 	i = 0;
-	// printf("steps = %i\n", 1);
 	while (i < steps)
 	{
 		rotate_operator(b);
-		ft_putstr_fd("rb\n", 1);
+		if (flag == 2)
+			ft_putstr_fd("rb\n", 1);
+		else
+			ft_putstr_fd("ra\n", 1);
 		i++;
 	}
 	push_operator(b, a);
-	ft_putstr_fd("pa\n", 1);
+	if (flag == 2)
+		ft_putstr_fd("pa\n", 1);
+	else
+		ft_putstr_fd("pb\n", 1);
 }
 
 void	push_back_to_a(t_stack *a, t_stack *b)
 {
 	int	big_up;
 	int big_down;
+	int flag;
+
+	flag = 0;
 	while (b->current_size > 0)
 	{
 		big_up = b->current_size - pos_biggest_number
@@ -147,12 +161,90 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 		big_up--;
 		big_down = pos_biggest_number(b->stack, b->current_size);
 		if (big_up < big_down)
-			move_up(big_up, b, a);
+		{
+			flag = 2;
+			move_up(big_up, b, a, flag);
+		}
 		else
-			move_down(big_down, b, a);
+		{
+			flag = 2;
+			move_down(big_down, b, a, flag);
+		}
 	}
 }
+
+int		steps_up(t_stack *a, int current_quarter, int *quarters)
+{
+	int i = a->current_size;
+	int lowerbound;
+	int upperbound;
+
+	if(current_quarter == 0)
+		lowerbound = 0;
+	else
+		lowerbound = quarters[current_quarter - 1];
+	upperbound = quarters[current_quarter];
+	while (i)
+	{
+		
+		if (a->stack[i] >= lowerbound && a->stack[i] <= upperbound)
+			return i;
+		i--;
+	}
+	return -1;
+}
+
+int		steps_down(t_stack *a, int current_quarter, int *quarters)
+{
+	int i = 0;
+	int lowerbound;
+	int upperbound;
+
+	if (current_quarter == 0)
+		lowerbound = 0;
+	else
+		lowerbound = quarters[current_quarter - 1] - 1;
+	upperbound = quarters[current_quarter];
+	while(i < a->current_size)
+	{
+		if (a->stack[i] >= lowerbound && a->stack[i] <= upperbound)
+			return i;
+		i++;
+	}
+	return -1;
+}
+
+void	find_biggest_smallest(t_stack *b, t_stack *a, int current_quarter, int *quarters)
+{
+	int		flag = 1;
+	int		step_up;
+	int 	step_down;
+	int		smallest_number;
+	step_up = 0;
+	step_down = 0;
+	smallest_number = smallest_num(a->stack, a->current_size);
+	while (smallest_number <= quarters[current_quarter])
+	{
+
+		if (steps_up(a, current_quarter, quarters) != - 1)
+		{
+			step_up = a->current_size - steps_up(a, current_quarter, quarters);
+			step_up--;
+		}
+		else
+			step_up = -1;
+		step_down = steps_down(a, current_quarter, quarters);
+		if (step_up > step_down)
+			move_up(step_up, a, b, flag);
+		else
+			move_down(step_down, a, b, flag);
+		smallest_number = smallest_num(a->stack, a->current_size);
+		if (smallest_number < 1)
+			break;
+	}
 	
+}
+
 void	solve_hundred(t_stack *a, t_stack *b)
 {
 	int			i;
@@ -162,37 +254,19 @@ void	solve_hundred(t_stack *a, t_stack *b)
 
 	after_rotate = 0;
 	i = 0;
-	current_quarter = 0;
+	current_quarter = 1;
 	quarters = malloc(sizeof(int) * 4);
+	if(quarters == NULL)
+		exit(1);
 	find_quarters(a, quarters);
-	while (i < a->current_size)
+	while (a->current_size > 0)
 	{
-		// first push numbers out of Q1
-		if (a->stack[a->current_size - 1] <= quarters[current_quarter])
-		{
-			push_operator(a, b);
-			ft_putstr_fd("pb\n", 1);
-			i = 0;
-		}
-		else
-		{
-			rotate_operator(a);
-			ft_putstr_fd("ra\n",1);
-		}
-		i++;
-		if (i == a->current_size)
-		{
-			
-			current_quarter++;
-			if (current_quarter == 5)
-			{
-				// print_stack(b);
-				push_back_to_a(a, b);
-				break ;
-			}
-			i = 0;
-		}
+		find_biggest_smallest(b, a, current_quarter, quarters);
+		current_quarter++;
+		if (current_quarter == 5)
+			break ;
 	}
+	push_back_to_a(a, b);
 }
 
 void	solve(t_stack *a, t_stack *b)
@@ -228,11 +302,6 @@ int main(int argc, char **argv)
 	a.size = argc - 1;
 	if (save_inputs(argv, &a, &b) == -1)
 		return (1);
-	// check if sorted
-	// print_stack(&a);
-
 	solve_hundred(&a, &b);
 	// print_stack(&a);
-	// print_stack(&b);
-	// solve(&a, &b);
 }

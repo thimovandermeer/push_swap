@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/19 14:52:06 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 15:15:06 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 08:33:05 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	smallest_num(int *array, int len)
 	int	i;
 	int	smallest_number;
 
-	i = len - 1;
+	if (len > 0)
+		i = len - 1;
+	else
+		return -1;
 	smallest_number = i;
 	while (i)
 	{
