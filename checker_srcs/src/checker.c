@@ -6,15 +6,16 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 10:49:16 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:45:51 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 15:41:37 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/thimovandermeer/Desktop/push_swap_compare/checker_srcs/include/checker.h"
+#include "../checker_srcs/include/checker.h"
 
 void	read_instructions(t_stack *a, t_stack *b)
 {
 	char	*operator;
+
 	while (get_next_line(STDIN_FILENO, &operator))
 	{
 		if (!ft_strcmp(operator, "STOP"))
@@ -38,7 +39,6 @@ int	main(int argc, char **argv)
 	t_stack	a;
 	t_stack	b;
 	int		ret;
-	int		*array;
 
 	if (argc <= 1)
 		return (1);
