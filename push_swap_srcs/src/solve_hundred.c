@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 09:04:52 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 11:40:39 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ void	print_array(int *array, int len)
 	}
 }
 
-void 	find_quarters(t_stack *a, int *quarters)
+void 	find_quarters(t_stack *a, int *quarters, int num_quarters)
 {
 	int	quarter_size;
 	int	array[a->current_size];
-	int num_quarters;
 	int	i;
 
-	num_quarters = 5; // zometeen variabel
 	quarter_size = a->current_size / (num_quarters - 1);
 
 	i = 0;

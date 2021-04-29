@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 11:25:52 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/28 14:01:10 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 11:42:04 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		pos_smallest_number(int *array, int size);
 void	solve_three(t_stack *a);
 void	solve_five(t_stack *a, t_stack *b);
 void	solve_hundred(t_stack *a, t_stack *b);
-void	solve_big_stack(void);
+void	solve_big_stack(t_stack *a, t_stack *b);
 void	solve(t_stack *a, t_stack *b);
 
 /*
@@ -40,7 +40,7 @@ void	solve(t_stack *a, t_stack *b);
 */
 
 void	push_median(t_stack *a, t_stack *b, int median, int split);
-void	find_quarters(t_stack *a, int *quarters);
+void 	find_quarters(t_stack *a, int *quarters, int num_quarters);
 void	move_up(int steps, t_stack *b, t_stack *a, int flag);
 void	move_down(int steps, t_stack *b, t_stack *a, int flag);
 void	find_biggest_smallest(t_stack *b, t_stack *a, int current_quarter, int *quarters);

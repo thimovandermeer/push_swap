@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 10:29:55 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 11:42:36 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,14 +248,16 @@ void	solve_hundred(t_stack *a, t_stack *b)
 	int			after_rotate;
 	int			current_quarter;
 	int			*quarters; // zometeen variabel maken
+	int 		num_quarters;
 
+	num_quarters = 5;
 	after_rotate = 0;
 	i = 0;
 	current_quarter = 1;
-	quarters = malloc(sizeof(int) * 4);
+	quarters = malloc(sizeof(int) * num_quarters);
 	if(quarters == NULL)
 		exit(1);
-	find_quarters(a, quarters);
+	find_quarters(a, quarters, num_quarters);
 	while (a->current_size > 0)
 	{
 		find_biggest_smallest(b, a, current_quarter, quarters);
@@ -265,6 +267,35 @@ void	solve_hundred(t_stack *a, t_stack *b)
 	}
 	push_back_to_a(a, b);
 }
+
+void	solve_big_stack(t_stack *a, t_stack *b)
+{
+	int			i;
+	int			after_rotate;
+	int			current_quarter;
+	int			*quarters; // zometeen variabel maken
+	int 		num_quarters;
+
+	num_quarters = 13;
+	after_rotate = 0;
+	i = 0;
+	current_quarter = 1;
+
+	quarters = malloc(sizeof(int) * num_quarters);
+	if(quarters == NULL)
+		exit(1);
+	find_quarters(a, quarters, num_quarters);
+	while (a->current_size > 0)
+	{
+		find_biggest_smallest(b, a, current_quarter, quarters);
+		current_quarter++;
+		if (current_quarter == num_quarters)
+			break ;
+	}
+	push_back_to_a(a, b);
+}
+
+
 
 void	solve(t_stack *a, t_stack *b)
 {
@@ -276,6 +307,8 @@ void	solve(t_stack *a, t_stack *b)
 			solve_five(a, b);
 		else if (a->size <= 100)
 			solve_hundred(a, b);
+		else
+			solve_big_stack(a, b);
 		return ;
 	}
 }
@@ -299,6 +332,6 @@ int main(int argc, char **argv)
 	a.size = argc - 1;
 	if (save_inputs(argv, &a, &b) == -1)
 		return (1);
-	solve_hundred(&a, &b);
+	solve(&a, &b);
 	// print_stack(&a);
 }
