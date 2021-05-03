@@ -6,12 +6,11 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:19:37 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 14:40:46 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
-#include <stdio.h>
 
 void	swap_elems(int *old_top, int *new_top)
 {

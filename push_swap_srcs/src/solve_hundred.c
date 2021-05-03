@@ -6,49 +6,23 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/26 13:26:22 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 14:36:02 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-void	push_median(t_stack *a, t_stack *b, int median, int split)
+void 	find_quarters(t_stack *a, int *quarters, int num_quarters)
 {
+	int	quarter_size;
 	int	i;
-	int	smallest;
+	int	*array;
 
-	smallest = smallest_num(a->stack, a->current_size);
-	i = 0;
-	while (i < a->size)
-	{
-		if (split == 1 && a->stack[a->current_size - 1] <= median)
-		{
-			push_operator(a, b);
-			ft_putstr_fd("pb\n", 1);
-		}
-		else if (split == 2 && a->stack[a->current_size -1] > median)
-		{
-			push_operator(a, b);
-			ft_putstr_fd("pb\n",1);
-		}
-		else
-		{
-			rotate_operator(a);
-			ft_putstr_fd("ra\n",1);
-		}
-		i++;
-	}
-}
-
-int 	find_median(t_stack *a)
-{
-	int	quarter_len;
-	int	array[a->current_size];
-	int	median;
-	int	i;
-
-	median = 0;
-	quarter_len = a->current_size / 4;
+	quarter_size = a->current_size / (num_quarters - 1);
+	array = malloc(sizeof(int) * a->current_size);
+	if (!array)
+		exit(1);
 	i = 0;
 	ft_bzero(array, a->current_size);
 	while (i < a->current_size)
@@ -57,75 +31,99 @@ int 	find_median(t_stack *a)
 		i++;
 	}
 	sort_array(array, a->current_size);
-	median = array[quarter_len * 2];
-	return (median);
-}
-
-void	move_up(int steps, t_stack *b, t_stack *a)
-{
-	int	i;
-
 	i = 0;
-	while (i < steps)
+	while (i < (num_quarters - 1))
 	{
-		rotate_operator(b);
-		ft_putstr_fd("rb\n", 1);
+		quarters[i] = array[quarter_size * i];
 		i++;
 	}
-	push_operator(b, a);
-	ft_putstr_fd("pa\n", 1);
+	quarters[i] = array[a->current_size - 1];
 }
 
-void	move_down(int steps, t_stack *b, t_stack *a)
+void	find_biggest_smallest(t_stack *b, t_stack *a,
+			int current_quarter, int *quarters)
+{
+	int		flag;
+	int		step_up;
+	int		step_down;
+	int		smallest_number;
+
+	flag = 1;
+	step_up = 0;
+	step_down = 0;
+	smallest_number = smallest_num(a->stack, a->current_size);
+	while (smallest_number <= quarters[current_quarter])
+	{
+		if (steps_up(a, current_quarter, quarters) != -1)
+		{
+			step_up = a->current_size - steps_up(a, current_quarter, quarters);
+			step_up--;
+		}
+		else
+			step_up = -1;
+		step_down = steps_down(a, current_quarter, quarters);
+		if (step_up > step_down)
+			move_up(step_up, a, b, flag);
+		else
+			move_down(step_down, a, b, flag);
+		smallest_number = smallest_num(a->stack, a->current_size);
+	}
+}
+
+int	pos_biggest_number(int *array, int size)
 {
 	int	i;
+	int	biggest_number_pos;
 
+	biggest_number_pos = 0;
 	i = 0;
-	steps++;
-	while (i < steps)
+	while (i < size)
 	{
-		ft_putstr_fd("rrb\n", 1);
-		reverse_rotate_operator(b);
+		if (array[i] > array[biggest_number_pos])
+			biggest_number_pos = i;
 		i++;
 	}
-	ft_putstr_fd("pa\n", 1);
-	push_operator(b, a);
+	return (biggest_number_pos);
 }
 
-int	find_biggest_smallest(t_stack *b, t_stack *a)
+int	pos_smallest_number(int *array, int size)
 {
-	t_steps	steps;
-	int		after_rotate;
+	int	i;
+	int	smallest_number_pos;
 
-	fill_steps(&steps, b);
-	after_rotate = 0;
-	if (steps.small_up < steps.big_up && steps.small_up < steps.small_down)
+	smallest_number_pos = 0;
+	i = 0;
+	while (i < size)
 	{
-		move_up(steps.small_up, b, a);
-		rotate_operator(a);
-		ft_putstr_fd("ra\n",1);
+		if (array[i] < array[smallest_number_pos])
+			smallest_number_pos = i;
+		i++;
 	}
-	else if (steps.big_up < steps.small_up && steps.big_up < steps.big_down)
+	return (smallest_number_pos);
+}
+
+void	push_back_to_a(t_stack *a, t_stack *b)
+{
+	int	big_up;
+	int	big_down;
+	int	flag;
+
+	flag = 0;
+	while (b->current_size > 0)
 	{
-		move_up(steps.big_up, b, a);
-		after_rotate++;
+		big_up = b->current_size - pos_biggest_number
+			(b->stack, b->current_size);
+		big_up--;
+		big_down = pos_biggest_number(b->stack, b->current_size);
+		if (big_up < big_down)
+		{
+			flag = 2;
+			move_up(big_up, b, a, flag);
+		}
+		else
+		{
+			flag = 2;
+			move_down(big_down, b, a, flag);
+		}
 	}
-	else if (steps.small_down < steps.big_down && steps.small_down < steps.small_up)
-	{
-		move_down(steps.small_down, b, a);
-		rotate_operator(a);
-		ft_putstr_fd("ra\n",1);
-	}
-	else if (steps.big_down < steps.small_down && steps.big_down < steps.big_up)
-	{
-		move_down(steps.big_down, b,a);
-		after_rotate++;
-	}
-	if (b->current_size == 1)
-	{
-		push_operator(b, a);
-		ft_putstr_fd("pa\n",1);
-		after_rotate++;
-	}
-	return after_rotate;
 }

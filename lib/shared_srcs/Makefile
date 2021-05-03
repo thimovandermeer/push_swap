@@ -6,7 +6,7 @@
 #    By: thvan-de <thvan-de@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/22 08:55:21 by thvan-de      #+#    #+#                  #
-#    Updated: 2021/04/22 14:08:56 by thvan-de      ########   odam.nl          #
+#    Updated: 2021/05/03 11:35:01 by thvan-de      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ HEADERDIR		= include
 OBJEXT      	= o
 BUILDDIR    	= obj
 BINDIR			= bin
-HEADER			= ../libft/libft.h
+HEADER			= ../include/libft.h
 
-LIBS			= ../libft/Libft.a
+LIBS			= ./libs/Libft.a
 
 INCLUDES 		= -Iinclude/
 
@@ -43,23 +43,18 @@ $(NAME): $(BINDIR)/$(NAME).a
 static: $(BINDIR)/$(NAME).a
 
 $(BINDIR)/$(NAME).a: $(BUILDDIR)/ $(BINDIR)/ $(OBJECTS)
-	$(MAKE) -C ../libft $(SILECE_MAKE)
-	cp ../libft/Libft.a $(BINDIR)/$(NAME).a
 	ar -cr $(BINDIR)/$(NAME).a $(BUILDDIR)/*.$(OBJEXT) $(LIBS)
 
 clean:
 ifneq ($(BUILDDIR),.)
 	/bin/rm -rf $(BUILDDIR)/
 endif
-	$(MAKE) -C ../libft/ clean $(SILECE_MAKE)
 
 fclean:
-	$(MAKE) -C ../libft/ fclean $(SILECE_MAKE)
 	$(MAKE) clean
 	/bin/rm -f $(NAME)
 
 re:
-	$(MAKE) -C ../libft/ re $(SILECE_MAKE)
 	$(MAKE) fclean
 	$(MAKE) all
 

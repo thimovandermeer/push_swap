@@ -6,95 +6,109 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/19 14:52:06 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/22 15:53:24 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/04/29 14:39:41 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_array(int *array, int len)
-{
-	int	tmp;
-	int	i;
-
-	i = 0;
-	tmp = 0;
-	while (i < len - 1)
-	{
-		if (array[i] < array[i + 1])
-			i++;
-		else
-		{
-			tmp = array[i];
-			array[i] = array[i + 1];
-			array[i + 1] = tmp;
-			i = 0;
-		}
-	}
-}
-
 int	smallest_num(int *array, int len)
 {
 	int	i;
-	int	smallest_number;
+	int	smallest_num;
 
-	i = len - 1;
-	smallest_number = i;
-	while (i)
+	smallest_num = 100000;
+	i = 0;
+	while (i < len)
 	{
-		if (array[i] <= smallest_number)
-			smallest_number = array[i];
+		if (array[i] < smallest_num)
+			smallest_num = array[i];
+		i++;
+	}
+	return (smallest_num);
+}
+
+void	move_down(int steps, t_stack *b, t_stack *a, int flag)
+{
+	int	i;
+
+	i = 0;
+	steps++;
+	while (i < steps)
+	{
+		if (flag == 2)
+			ft_putstr_fd("rrb\n", 1);
+		else
+			ft_putstr_fd("rra\n", 1);
+		reverse_rotate_operator(b);
+		i++;
+	}
+	if (flag == 2)
+		ft_putstr_fd("pa\n", 1);
+	else
+		ft_putstr_fd("pb\n", 1);
+	push_operator(b, a);
+}
+
+void	move_up(int steps, t_stack *b, t_stack *a, int flag)
+{
+	int	i;
+
+	i = 0;
+	while (i < steps)
+	{
+		rotate_operator(b);
+		if (flag == 2)
+			ft_putstr_fd("rb\n", 1);
+		else
+			ft_putstr_fd("ra\n", 1);
+		i++;
+	}
+	push_operator(b, a);
+	if (flag == 2)
+		ft_putstr_fd("pa\n", 1);
+	else
+		ft_putstr_fd("pb\n", 1);
+}
+
+int	steps_down(t_stack *a, int current_quarter, int *quarters)
+{
+	int	i;
+	int	lowerbound;
+	int	upperbound;
+
+	i = 0;
+	if (current_quarter == 0)
+		lowerbound = 0;
+	else
+		lowerbound = quarters[current_quarter - 1] - 1;
+	upperbound = quarters[current_quarter];
+	while (i < a->current_size)
+	{
+		if (a->stack[i] >= lowerbound && a->stack[i] <= upperbound)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int	steps_up(t_stack *a, int current_quarter, int *quarters)
+{
+	int	i;
+	int	lowerbound;
+	int	upperbound;
+
+	i = a->current_size;
+	if (current_quarter == 0)
+		lowerbound = 0;
+	else
+		lowerbound = quarters[current_quarter - 1];
+	upperbound = quarters[current_quarter];
+	while (i)
+	{	
+		if (a->stack[i] >= lowerbound && a->stack[i] <= upperbound)
+			return (i);
 		i--;
 	}
-	return (smallest_number);
-}
-
-void 	fill_steps(t_steps *steps, t_stack *b)
-{
-	steps->big_up = 0;
-	steps->small_up = 0;
-	steps->big_down = 0;
-	steps->small_down = 0;
-	steps->big_up = b->current_size - pos_biggest_number(b->stack,
-		b->current_size);
-	steps->small_up = b->current_size - pos_smallest_number(b->stack,
-		b->current_size);
-	steps->big_up -= 1;
-	steps->small_up -= 1;
-	steps->big_down = pos_biggest_number(b->stack, b->current_size);
-	steps->small_down = pos_smallest_number(b->stack, b->current_size);
-}
-
-int	find_up(t_steps *steps, t_stack *b, t_stack *a, int after_rotate)
-{
-	if (steps->small_up < steps->big_up && steps->small_up < steps->small_down)
-	{
-		move_up(steps->small_up, b, a);
-		rotate_operator(a);
-		ft_putstr_fd("ra\n", 1);
-	}
-	else if (steps->big_up < steps->small_up && steps->big_up < steps->big_down)
-	{
-		move_up(steps->big_up, b, a);
-		after_rotate++;
-	}
-	return (after_rotate);
-}
-
-int	find_down(t_steps *steps, t_stack *b, t_stack *a, int after_rotate)
-{
-	if (steps->small_down < steps->big_down
-		&& steps->small_down < steps->small_up)
-	{
-		move_down(steps->small_down, b, a);
-		ft_putstr_fd("ra\n", 1);
-		rotate_operator(a);
-	}
-	else if (steps->big_down < steps->small_down
-		&& steps->big_down < steps->big_up)
-	{
-		move_down(steps->big_down, b, a);
-		after_rotate++;
-	}
-	return (after_rotate);
+	return (-1);
 }
