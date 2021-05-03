@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/29 14:30:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:41:57 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/05/03 11:20:17 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,40 @@ void	solve_three(t_stack *a)
 	solve_three_part_two(a, biggest, smallest);
 }
 
+void	print_stack(t_stack *a)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < a->current_size)
+	{
+		printf("%zu = %i\n", i, a->stack[i]);
+		i++;
+	}
+	printf("Full stack has been printed\n");
+}
+
 void	solve_five(t_stack *a, t_stack *b)
 {
-	ft_putstr_fd("pb\n", 1);
-	ft_putstr_fd("pb\n", 1);
-	push_operator(a, b);
-	push_operator(a, b);
+	int biggest;
+	int smallest;
+
+	
+	while(a->current_size > 3)
+	{
+		biggest = pos_biggest_number(a->stack, a->current_size);
+		smallest = pos_smallest_number(a->stack, a->current_size);
+		if (biggest == a->current_size - 1 || smallest == a->current_size - 1)
+		{
+			ft_putstr_fd("pb\n", 1);
+			push_operator(a, b);
+		}
+		else
+		{
+			ft_putstr_fd("ra\n", 1);
+			rotate_operator(a);
+		}
+	}
 	solve_three(a);
 	ft_putstr_fd("pa\n", 1);
 	push_operator(b, a);
@@ -73,7 +101,8 @@ void	solve_five(t_stack *a, t_stack *b)
 	push_operator(b, a);
 	if (a->stack[a->current_size - 1] > a->stack[0])
 	{
-		rotate_operator(a);
 		ft_putstr_fd("ra\n", 1);
+		rotate_operator(a);
 	}
+	// print_stack(a);
 }

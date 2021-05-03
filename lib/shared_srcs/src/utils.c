@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:04:39 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:42:15 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/05/03 08:55:49 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	save_inputs(char **arguments, t_stack *a, t_stack *b)
 		if (check_duplicate(a->stack, a->current_size,
 				a->stack[a->current_size]))
 		{
+			// printf("klapt hij op duplicates?\n");
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit(1);
 		}
@@ -77,6 +78,7 @@ int	is_all_num(char *arguments)
 	{
 		if (!ft_isdigit(arguments[i]))
 		{
+			// printf("klapt hij op is al num ?\n");
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit(1);
 		}
@@ -96,11 +98,13 @@ int	is_integer(char *arguments)
 		res = ft_atoi(arguments);
 		if (res == -1)
 		{
+			// printf("op is integer ?\n");
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit(1);
 		}
 		if (res < 0)
 		{
+			// printf("op is integer?\n");
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit(1);
 		}
