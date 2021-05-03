@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 08:40:48 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 15:40:09 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/05/03 11:30:15 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SHARED_H
 # include <unistd.h>
 # include <stdlib.h>
-# include "/Users/thimovandermeer/Desktop/Codam projecten/push_swap/lib/libft/libft.h"
+# include "libft.h"
+
 typedef struct s_stack
 {
 	size_t	size;

@@ -2,7 +2,7 @@ SILECE_MAKE = | grep -v -E ".*Leaving directory|.*Entering directory"
 NL = @echo ""
 
 all bonus:
-	make -C lib/libft/ $(SILECE_MAKE)
+	# make -C lib/libft/ $(SILECE_MAKE)
 	make -C lib/shared_srcs $(SILECE_MAKE)
 	make -C checker_srcs $(SILECE_MAKE)
 	make -C push_swap_srcs $(SILECE_MAKE)
@@ -10,13 +10,13 @@ all bonus:
 	@ln -fs checker_srcs/checker checker
 
 clean:
-	make -C lib/libft/ clean $(SILECE_MAKE)
+	# make -C lib/libft/ clean $(SILECE_MAKE)
 	make -C lib/shared_srcs clean $(SILECE_MAKE)
 	make -C checker_srcs/ clean $(SILECE_MAKE)
 	make -C push_swap_srcs clean $(SILECE_MAKE)
 
 fclean:
-	make -C lib/libft/ fclean $(SILECE_MAKE)
+	# make -C lib/libft/ fclean $(SILECE_MAKE)
 	make -C lib/shared_srcs/ fclean $(SILECE_MAKE)
 	make -C checker_srcs/ fclean $(SILECE_MAKE)
 	make -C push_swap_srcs/ fclean $(SILECE_MAKE)

@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/22 11:25:52 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 15:45:28 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/05/03 11:25:00 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void	solve(t_stack *a, t_stack *b);
 int		main(int argc, char **argv);
 
 /*
-*  push_swap functions
+*  small_solve _functions
 */
 
 void	solve_three_part_two(t_stack *a, int biggest, int smallest);
 void	solve_three(t_stack *a);
 void	solve_five(t_stack *a, t_stack *b);
+void	solve_five_push_big_small(t_stack *a, t_stack *b);
 
 /*
 *  solve hundred functions

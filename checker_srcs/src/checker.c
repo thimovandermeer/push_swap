@@ -6,7 +6,7 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 10:49:16 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/05/03 09:22:09 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/05/03 11:21:48 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (check_inputs(argc, argv))
 	{
-		// printf("klapt hij op deze input?\n");
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 		exit(1);
 	}

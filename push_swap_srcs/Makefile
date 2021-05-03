@@ -6,7 +6,7 @@
 #    By: thvan-de <thvan-de@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/22 09:05:57 by thvan-de      #+#    #+#                  #
-#    Updated: 2021/04/22 14:02:42 by thvan-de      ########   odam.nl          #
+#    Updated: 2021/05/03 11:39:27 by thvan-de      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ HEADERDIR	= include
 OBJEXT 		= o
 BUILDDIR	= obj
 
-LIBS 		= ../lib/libft/Libft.a
+LIBS 		= ../lib/shared_srcs/libs/Libft.a
 INCLUDES 	= -I$(HEADERDIR) -I../lib/
 
 HEADERS 	= $(shell find $(HEADERDIR) -type f -name '*.h')
