@@ -6,11 +6,16 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 13:40:48 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/05/03 09:19:33 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 13:41:07 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_srcs/include/checker.h"
+
+/*
+* 	This function checks which swap operation is being asked, it executes the right operation afterwards.
+*	The swap operation can be called either on the A stack or the B stack, thats why both are being taken in. 
+*/
 
 int	check_swap_operator(const char *operator, t_stack *a, t_stack *b)
 {
@@ -33,6 +38,12 @@ int	check_swap_operator(const char *operator, t_stack *a, t_stack *b)
 	return (0);
 }
 
+/*
+* 	This function checks which push operation is being asked, it executes the right operation afterwards.
+*	The push operation can be called either on the A stack or the B stack, thats why both are being taken in.
+*/
+
+
 int	check_push_operator(const char *operator, t_stack *a, t_stack *b)
 {
 	if (!ft_strcmp(operator, "pa"))
@@ -47,6 +58,13 @@ int	check_push_operator(const char *operator, t_stack *a, t_stack *b)
 	}
 	return (0);
 }
+
+/*
+* 	This function checks which rotate operator is being asked, it executes the right operation afterwards.
+*	The rotate operation can be called either on the A stack or the B stack, or the two at the same time
+*	thats why both are being taken in.
+*/
+
 
 int	check_rotate_operator(const char *operator, t_stack *a, t_stack *b)
 {
@@ -69,6 +87,13 @@ int	check_rotate_operator(const char *operator, t_stack *a, t_stack *b)
 	return (0);
 }
 
+/*
+* 	This function checks which reverse rotate operator is being asked, it executes the right operation afterwards.
+*	The rotate operation can be called either on the A stack or the B stack, or the two at the same time
+*	thats why both are being taken in.
+*/
+
+
 int	check_reverse_operator(const char *operator, t_stack *a, t_stack *b)
 {
 	if (!ft_strcmp(operator, "rra"))
@@ -89,6 +114,12 @@ int	check_reverse_operator(const char *operator, t_stack *a, t_stack *b)
 	}
 	return (0);
 }
+
+/*
+* 	This function combines all above functions, it checks the operator and executes it
+*	if 0 is being returned it means that no operator has been called and so there is an error in the operator
+*/
+
 
 int	check_operator(t_stack *a, t_stack *b, const char *operator)
 {

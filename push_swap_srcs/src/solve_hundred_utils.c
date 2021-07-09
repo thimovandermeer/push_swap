@@ -6,18 +6,26 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/19 14:52:06 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:39:41 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 14:25:26 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+# define SMALLEST_NUM 10000000
+
+/*
+*	This function returns the smallest number in the stack.
+*	I have hardcoded the starting number which is dangerous.
+*	For our use case however this limit is acceptable
+*/
+
 
 int	smallest_num(int *array, int len)
 {
 	int	i;
 	int	smallest_num;
 
-	smallest_num = 100000;
+	smallest_num = SMALLEST_NUM;
 	i = 0;
 	while (i < len)
 	{
@@ -27,6 +35,11 @@ int	smallest_num(int *array, int len)
 	}
 	return (smallest_num);
 }
+
+/*
+* 	This function moves the number all the way down in the stack. At the end it pushes the number to the other stack
+*/
+
 
 void	move_down(int steps, t_stack *b, t_stack *a, int flag)
 {
@@ -50,6 +63,11 @@ void	move_down(int steps, t_stack *b, t_stack *a, int flag)
 	push_operator(b, a);
 }
 
+/*
+* 	This function moves the number all the way up in the stack. At the end it pushes the number to the other stack
+*/
+
+
 void	move_up(int steps, t_stack *b, t_stack *a, int flag)
 {
 	int	i;
@@ -71,6 +89,11 @@ void	move_up(int steps, t_stack *b, t_stack *a, int flag)
 		ft_putstr_fd("pb\n", 1);
 }
 
+/*
+*	This function calculate the steps it needs to take to move the number all the way down the stack
+*/
+
+
 int	steps_down(t_stack *a, int current_quarter, int *quarters)
 {
 	int	i;
@@ -91,6 +114,11 @@ int	steps_down(t_stack *a, int current_quarter, int *quarters)
 	}
 	return (-1);
 }
+
+/*
+*	This function calculate the steps it needs to take to move the number all the way up the stack
+*/
+
 
 int	steps_up(t_stack *a, int current_quarter, int *quarters)
 {

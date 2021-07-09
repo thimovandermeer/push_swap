@@ -6,11 +6,16 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:04:39 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/05/03 11:26:48 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 13:54:40 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
+
+/*
+* 	Function which checks for duplicate inputs 
+*/
+
 
 int	check_duplicate(int *array, int len, int number)
 {
@@ -22,6 +27,14 @@ int	check_duplicate(int *array, int len, int number)
 	}
 	return (0);
 }
+
+/*
+* 	This function saves the input to the stack inside the structure
+*	It also creates the B stack which has the same size as the A stack
+*	This is not memory efficient I know but with the pase in which we rotate numbers
+*	it is even more inefficient to reallocate continously. (stack memory is not allowed by school)
+*/
+
 
 int	save_inputs(char **arguments, t_stack *a, t_stack *b)
 {
@@ -52,6 +65,10 @@ int	save_inputs(char **arguments, t_stack *a, t_stack *b)
 	return (0);
 }
 
+/*
+* 	Checks if the input array contains only numbers and that there is no integer overflow. 
+*/
+
 int	check_inputs(int num_args, char **arguments)
 {
 	int	i;
@@ -67,6 +84,10 @@ int	check_inputs(int num_args, char **arguments)
 	}
 	return (0);
 }
+
+/*
+* 	Function to actually check if it are numbers
+*/
 
 int	is_all_num(char *arguments)
 {
@@ -84,6 +105,10 @@ int	is_all_num(char *arguments)
 	}
 	return (0);
 }
+
+/*
+* 	Check if the numbers arent to big etc if res is < 0 return error
+*/
 
 int	is_integer(char *arguments)
 {

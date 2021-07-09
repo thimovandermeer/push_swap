@@ -6,11 +6,16 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 10:49:16 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/05/03 11:21:48 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 13:53:28 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_srcs/include/checker.h"
+
+/*
+* 	This function creates the operator from the terminal. Using get_next_line we retrieve the operator.
+*	The only check being done here is for STOP this is for debugging purposes.
+*/
 
 void	read_instructions(t_stack *a, t_stack *b)
 {
@@ -28,11 +33,20 @@ void	read_instructions(t_stack *a, t_stack *b)
 	}
 }
 
+/*
+* 	This function cleans the two stacks
+*/
+
 void	clean_stacks(int **a, int **b)
 {
 	free(*a);
 	free(*b);
 }
+
+/*
+* 	Main function in which all actions are being orchestrated
+*/
+
 
 int	main(int argc, char **argv)
 {

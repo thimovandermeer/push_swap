@@ -6,11 +6,17 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/29 14:30:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/05/03 11:24:27 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 14:25:35 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+* 	Not my most beautifull code but it solves the stack of only three numbers.
+*	It checks the position of the biggest and smallest element.
+*	Using this information the operations are being called
+*/
 
 void	solve_three_part_two(t_stack *a, int biggest, int smallest)
 {
@@ -40,6 +46,12 @@ void	solve_three_part_two(t_stack *a, int biggest, int smallest)
 	}
 }
 
+/*
+* 	Not my most beautifull code but it solves the stack of only three numbers.
+*	It checks the position of the biggest and smallest element.
+*	Using this information the operations are being called
+*/
+
 void	solve_three(t_stack *a)
 {
 	int	biggest;
@@ -54,6 +66,11 @@ void	solve_three(t_stack *a)
 	}
 	solve_three_part_two(a, biggest, smallest);
 }
+
+/*
+*	This function pushed the biggest and smallest number to the B stack
+*	This function is only being used in the push five function bellow
+*/
 
 void	solve_five_push_big_small(t_stack *a, t_stack *b)
 {
@@ -76,6 +93,13 @@ void	solve_five_push_big_small(t_stack *a, t_stack *b)
 		}
 	}
 }
+
+/*
+* 	This is the function which solves inputs in the range of 3 to 5 numbers.
+*	It solves it by pushing the biggest and smallest number to the other stack
+*	After that it calls the solve three and he pushed the biggest and smallest back to the A stack 
+*/
+
 
 void	solve_five(t_stack *a, t_stack *b)
 {

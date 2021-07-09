@@ -6,11 +6,16 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 14:10:56 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:40:46 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 13:53:26 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
+
+/*
+* 	Function two swap the two elements at the top its just a classes swap function
+*/
+
 
 void	swap_elems(int *old_top, int *new_top)
 {
@@ -21,6 +26,14 @@ void	swap_elems(int *old_top, int *new_top)
 	*new_top = temp;
 }
 
+/*
+* 	The Swap operator itself, this operator calls the swap_elemens and check is the stack size is not 1
+*	its difficult to swap two elements if there is only one in the stack 
+*	(YES THIS SEGMENTATION FAULT TOOK A LONG TIME TO SOLVE AND YES IT HURTS THAT IT IS SOMETHING SOOO STUPID)
+*/
+
+
+
 void	swap_operator(t_stack *stack)
 {
 	if (stack->current_size <= 1)
@@ -29,6 +42,11 @@ void	swap_operator(t_stack *stack)
 		swap_elems(&(stack->stack[stack->current_size - 1]),
 			&(stack->stack[stack->current_size - 2]));
 }
+
+/*
+* 	The push operator this operator pops one from the giver and pushes one to the taker
+*/
+
 
 void	push_operator(t_stack *giver, t_stack *receiver)
 {
@@ -42,6 +60,11 @@ void	push_operator(t_stack *giver, t_stack *receiver)
 		giver->current_size--;
 	}
 }
+
+/*
+* 	The reverse rotate operator rotates the two elements at the bottom
+*/
+
 
 void	reverse_rotate_operator(t_stack *a)
 {
@@ -57,6 +80,10 @@ void	reverse_rotate_operator(t_stack *a)
 	}
 	a->stack[i] = first;
 }
+
+/*
+* 	The rotate operator rotates the two elements at the top
+*/
 
 void	rotate_operator(t_stack *a)
 {

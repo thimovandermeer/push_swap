@@ -6,11 +6,15 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/29 14:41:29 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:42:02 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 13:55:02 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
+
+/*
+* 	Checks if the result is actually sorted
+*/
 
 int	is_sorted(t_stack *a)
 {
@@ -27,6 +31,10 @@ int	is_sorted(t_stack *a)
 	}
 	return (1);
 }
+
+/*
+* 	Sort the array 
+*/
 
 void	sort_array(int *array, int len)
 {

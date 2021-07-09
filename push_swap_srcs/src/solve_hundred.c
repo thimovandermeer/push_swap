@@ -6,12 +6,19 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/13 08:17:43 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:36:02 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 14:13:30 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+/*
+* 	This function calculates which numbers (inside the array) create the boundaries
+*	between de differend quarters
+*	It safes those boundaries for later use
+*/
+
 
 void 	find_quarters(t_stack *a, int *quarters, int num_quarters)
 {
@@ -39,6 +46,14 @@ void 	find_quarters(t_stack *a, int *quarters, int num_quarters)
 	}
 	quarters[i] = array[a->current_size - 1];
 }
+
+/*
+*	This function calculates the distance to a number which falls between the boundarie of the quarter
+*	The program is currently pushing. It checks how far a number is the buttom of the stack and
+*	How far a number is from the top of the stack. It then checks which one is closer and start calculating
+*	The steps which need to be taken to push it to the other stack
+*/
+
 
 void	find_biggest_smallest(t_stack *b, t_stack *a,
 			int current_quarter, int *quarters)
@@ -70,6 +85,10 @@ void	find_biggest_smallest(t_stack *b, t_stack *a,
 	}
 }
 
+/*
+* 	This function determines the positon of the biggest number currently in the stack
+*/
+
 int	pos_biggest_number(int *array, int size)
 {
 	int	i;
@@ -86,6 +105,11 @@ int	pos_biggest_number(int *array, int size)
 	return (biggest_number_pos);
 }
 
+/*
+* 	This function determines the position of the smallest number currently in the stack
+*/
+
+
 int	pos_smallest_number(int *array, int size)
 {
 	int	i;
@@ -101,6 +125,12 @@ int	pos_smallest_number(int *array, int size)
 	}
 	return (smallest_number_pos);
 }
+
+/*
+* 	This function checks if the current number which has to be pushed back is closer to the upper limit
+*	Or to the lower limit it then determines if it should move up or down.
+*/
+
 
 void	push_back_to_a(t_stack *a, t_stack *b)
 {

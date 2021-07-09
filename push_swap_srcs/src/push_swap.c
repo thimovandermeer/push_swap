@@ -6,11 +6,16 @@
 /*   By: thvan-de <thvan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/12 10:35:28 by thvan-de      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:31:25 by thvan-de      ########   odam.nl         */
+/*   Updated: 2021/07/09 14:13:33 by thvan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+* 	This function contains all the logic for a stack smaller or equal to 100.
+*	The logic behind this algorithm is explained in the Readme on my github readme
+*/
 
 void	solve_hundred(t_stack *a, t_stack *b)
 {
@@ -34,6 +39,10 @@ void	solve_hundred(t_stack *a, t_stack *b)
 	push_back_to_a(a, b);
 }
 
+/*
+* 	This function contains all the logic for a stack bigger than 100
+*/
+
 void	solve_big_stack(t_stack *a, t_stack *b)
 {
 	int	current_quarter;
@@ -56,6 +65,10 @@ void	solve_big_stack(t_stack *a, t_stack *b)
 	push_back_to_a(a, b);
 }
 
+/*
+* 	This function maps the current stack to the right solver. This is being determined by the size of the stack
+*/
+
 void	solve(t_stack *a, t_stack *b)
 {
 	if (!is_sorted(a))
@@ -71,6 +84,10 @@ void	solve(t_stack *a, t_stack *b)
 		return ;
 	}
 }
+
+/*
+* 	Main function which contains all the logic for the push swap program
+*/
 
 int	main(int argc, char **argv)
 {
