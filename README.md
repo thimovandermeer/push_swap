@@ -1,7 +1,7 @@
 # Push_swap
 ## Created a sorting algorithm following these specs:
 
-### The game is composed of 2 stacks named a and b. • To start with:
+### The game is composed of 2 stacks named a and b.
 * a contains a random number of either positive or negative numbers without any duplicates.
 * b is empty
 ### The goal is to sort in ascending order numbers into stack a.
@@ -18,6 +18,30 @@ the last one.
 * rb : rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
 * rr : ra and rb at the same time.
 * rra : reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
+
+## Solution
+To solve this problem I have created four different algorithms:
+### solve three
+This one is fairly easy, you determine the position of the biggest and smallest number. If you know on which position they are located inside the array you just swap them.
+### solve five
+This one builds on the earlier on the solve three. It pushes the biggest and smallest number to the B stack. After that it solves the A stack using solve three then it pushes from stack B the biggest to the top and the smallest to the bottom of stack A.
+### solve 100
+From here it start to become fun.
+
+#### Batches
+I'm using an algorithm which puts the numbers in the B stack in batches. I first determine the batch sizes, I solve a couple of stack with different stack sizes and check how much rotations it needs to solve it. As soon as I found one which is fairly efficient I use that batch size as the standard. For 100 I use a batch size of 5. So the stack which contains 100 numbers is putted in 5 groupes each with its own upper and lower limit.
+
+#### Closest to upper of lower border
+As soon as I know the batches I start pushing the smallest batch to the B stack. I determine the position of all the numbers which are part of this batch inside the A stack. After that I check which of those numbers is closest to the top or buttom of the A stack. 
+
+#### Moving number up or down the stack
+When I know which number is closest I start moving that number to the Top or Buttom of the stack. As soon as it gets there I push the number to the B stack. These steps continue until the entire stack is added to the B stack in batches. This way I know that all numbers which have to be pushed back in order are fairly close to eachother inside the B stack. 
+
+#### Moving back to the A stack
+The last step is pushing all these numbers back to the A stack. Again I calculate the distance from the highest number to the top or buttom and start pushing them back to A untill all numbers are sorted inside the A stack. 
+
+### solve big stack which means more than 100
+The bigstack is solved in nearly the same way as solve 100 the only difference is the batch size. I determine the batch size again and use this new batch size inside my logic. The perfect batch size for an array of 500 is around 13 batches.
 
 ## How it works
 Once you clone this repository you have a couple of make options:
